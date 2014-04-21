@@ -42,11 +42,14 @@ int main(){
     std::cout << "replaceOccurences: " << lib->replaceOccurences(final, old, current) << std::endl << std::endl;
 
     // Testing separting string into an array
-    std::vector<std::string> test = lib->SeparateComponentsBy("My,name,is,taylor", ",");
+    std::vector<std::string> test = lib->explode("My,name,is,taylor", ",");
     for(std::vector<std::string>::iterator it = test.begin(); it != test.end(); ++it) {
     	std::cout << *it << " ";
 	}
 	std::cout << std::endl << std::endl;
+
+	std::cout << "word count: " << lib->wordCount(s) << std::endl;
+	std::cout << "imploded: " << lib->implode(test, "-") << std::endl;
 
 	// Testing url validation methods
 	std::string theURL = "https://docs.google.com/a/acu.edu/document/d/1q8Z_VAMSqz8pyo_jR0_hJXbIjgj-ZUKZXjarDbE_JBQ/edit";

@@ -25,9 +25,13 @@ public:
 
 	std::string replaceOccurences(std::string completeString, const std::string oldStr, const std::string newStr);
 
-	std::vector<std::string> SeparateComponentsBy(std::string completeString, std::string delim);
+	std::vector<std::string> explode(std::string completeString, std::string delim);
+	std::string implode(std::vector<std::string> stringArray, std::string joiner);
 
 	bool isURL(std::string url);
 	std::string protocolInString(std::string url);
+
+	int wordCount(std::string completeString);
+	int wordCount(std::string completeString, std::string delim);
 };
 

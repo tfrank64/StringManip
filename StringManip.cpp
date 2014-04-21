@@ -107,7 +107,7 @@ std::string StringManip::replaceOccurences(std::string completeString, const std
 }
 
 // Given a string, we create a vector array of strings using the passed in delimeter
-std::vector<std::string> StringManip::SeparateComponentsBy(std::string completeString, std::string delim) {
+std::vector<std::string> StringManip::explode(std::string completeString, std::string delim) {
 	std::vector<std::string> components;
     std::string token;
     size_t pos = 0;
@@ -121,6 +121,16 @@ std::vector<std::string> StringManip::SeparateComponentsBy(std::string completeS
     
     components.push_back(completeString);
     return components;
+}
+
+std::string StringManip::implode(std::vector<std::string> stringArray, std::string joiner) {
+    std::string joinedString = "";
+    for(std::vector<std::string>::iterator it = stringArray.begin(); it != stringArray.end(); ++it) {        
+        joinedString += *it;
+        if (it + 1 != stringArray.end())
+            joinedString += joiner;
+    }
+    return joinedString;
 }
 
 // Validates if passed in string is some sort of URL
@@ -140,4 +150,13 @@ std::string StringManip::protocolInString(std::string url) {
         return protocol;
     }
     return "";
+}
+
+int StringManip::wordCount(std::string completeString, std::string delim) {
+    std::vector<std::string> exploded = explode(completeString, delim);
+    return exploded.size() & INT_MAX;
+}
+
+int StringManip::wordCount(std::string completeString) {
+    return wordCount(completeString, " ");
 }
