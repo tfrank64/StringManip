@@ -2,7 +2,7 @@
 #include <assert.h>
 #include <string>
 #include <vector>
-#include "strObj.h"
+#include "StringManip.h"
 
 int main(){
 	//Testing library contruction.

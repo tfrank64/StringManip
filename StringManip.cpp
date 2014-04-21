@@ -1,5 +1,5 @@
 #include <iostream>
-#include "strObj.h"
+#include "StringManip.h"
 
 //Flag to check if an instance of the library is already created.
 bool StringManip::instanceFlag = false;
