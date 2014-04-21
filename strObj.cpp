@@ -2,16 +2,16 @@
 #include "strObj.h"
 
 //Flag to check if an instance of the library is already created.
-bool strManip::instanceFlag = false;
+bool StringManip::instanceFlag = false;
 
 //Address of the library instance, once created;
-strManip* strManip::single = NULL;
+StringManip* StringManip::single = NULL;
 
 //Function to create instance if it doesn't exist, else return address of instance.
-strManip* strManip::getInstance(){
+StringManip* StringManip::getInstance() {
     if(!instanceFlag)
     {
-        single = new strManip(); //Creaing new and only instance.
+        single = new StringManip(); //Creaing new and only instance.
         instanceFlag = true;
         return single;
     }
@@ -21,15 +21,17 @@ strManip* strManip::getInstance(){
     }
 }
 
+/* StringManip Library Methods */
+
 //A "Trim" function, removes trailing endline characters.
-void strManip::chomp (std::string &str1){
+void StringManip::chomp (std::string &str1) {
 std::string::size_type pos = str1.find_last_not_of("\n \t");
 if(pos != std::string::npos)
   str1 = str1.substr(0, pos+1);
 }
 
 //A "Filter" function that filters substring from strings.
-void strManip::chomp (std::string &str1, std::string &sub){
+void StringManip::chomp (std::string &str1, std::string &sub) {
 std::string final = "";
 unsigned pos = str1.find(sub);
 int n = 0;
@@ -41,7 +43,7 @@ str1 = final + string2;
 }
 
 //Function that takes in a string array and outputs the elements in a sentence structure.
-std::string strManip::toSentence (std::string* strArray, int n){
+std::string StringManip::toSentence (std::string* strArray, int n) {
 std::string final = "";
 for (int i = 0; i < n-1; i++)
 	final += strArray[i] + ", ";	
@@ -50,7 +52,7 @@ return final;
 }
 
 //Function that takes in a string array and outputs the elements in a sentence structure, given a specific modifer.
-std::string strManip::toSentence (std::string* strArray, int n, std::string modifier){
+std::string StringManip::toSentence (std::string* strArray, int n, std::string modifier) {
 std::string final = "";
 for (int i = 0; i < n-1; i++)
 	final += strArray[i] + ", ";	
@@ -58,8 +60,8 @@ final += modifier + " " + strArray[n-1]; //Appends specified modifier + last ele
 return final;
 }
 
-//Toupper function for strings, used in strManip::capitalize.
-void strManip::toUpper(std::string& in){
+//Toupper function for strings, used in StringManip::capitalize.
+void StringManip::toUpper(std::string& in) {
 	int i=0;
 	char c;
 	while (in[i]){
@@ -70,8 +72,8 @@ void strManip::toUpper(std::string& in){
 	}
 }
 
-//Tolower function for strings, used in strManip::capitalize.
-void strManip::toLower(std::string& in){
+//Tolower function for strings, used in StringManip::capitalize.
+void StringManip::toLower(std::string& in) {
 	int i=0;
 	char c;
 	while (in[i]){
@@ -83,7 +85,7 @@ void strManip::toLower(std::string& in){
 }
 
 //Given a string, capitalizes the first character lowercases everything else.
-std::string strManip::capitalize (std::string str1){
+std::string StringManip::capitalize (std::string str1) {
 	std::string head, tail;
 	head = str1[0];
 	tail = (str1.substr(1,std::string::npos));
@@ -91,4 +93,51 @@ std::string strManip::capitalize (std::string str1){
 	toLower(tail);
 	std::string final = head + tail;
 	return final;
+}
+
+// Given three strings, we replace all occurences of oldStr with newStr and return the modified version
+std::string StringManip::replaceOccurences(std::string completeString, const std::string oldStr, const std::string newStr) {
+    size_t pos = 0;
+    while((pos = completeString.find(oldStr, pos)) != std::string::npos)
+    {
+        completeString.replace(pos, oldStr.length(), newStr);
+        pos += newStr.length();
+    }
+    return completeString;
+}
+
+// Given a string, we create a vector array of strings using the passed in delimeter
+std::vector<std::string> StringManip::SeparateComponentsBy(std::string completeString, std::string delim) {
+	std::vector<std::string> components;
+    std::string token;
+    size_t pos = 0;
+    
+    while ((pos = completeString.find(delim)) != std::string::npos)
+    {
+        token = completeString.substr(0, pos);
+        components.push_back(token);
+        completeString.erase(0, pos + delim.length());
+    }
+    
+    components.push_back(completeString);
+    return components;
+}
+
+// Validates if passed in string is some sort of URL
+bool StringManip::isURL(std::string url) {
+	std::string::size_type pos = url.find("://");
+    if (pos != std::string::npos)
+    	return true;
+    return false;
+}
+
+// Returns the protocol (eg. https) for passed in, valid URL
+std::string StringManip::protocolInString(std::string url) {
+    std::string::size_type pos = url.find("://");
+    if (pos != std::string::npos)
+    {
+        std::string protocol = url.substr(0, pos);
+        return protocol;
+    }
+    return "";
 }
