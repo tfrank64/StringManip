@@ -152,6 +152,7 @@ std::string StringManip::protocolInString(std::string url) {
     return "";
 }
 
+/*
 int StringManip::wordCount(std::string completeString, std::string delim) {
     std::vector<std::string> exploded = explode(completeString, delim);
     return exploded.size() & INT_MAX;
@@ -160,3 +161,4 @@ int StringManip::wordCount(std::string completeString, std::string delim) {
 int StringManip::wordCount(std::string completeString) {
     return wordCount(completeString, " ");
 }
+*/

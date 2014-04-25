@@ -15,7 +15,7 @@ int main(){
 	assert(lib == lib2);
 
 	//Testing chomp.
-	std::string x = "test\n"; 	
+	;std::string x = "test\n"; 	
 	std::string y = "te";//Substring to be removed.
 	lib->chomp (x,y);
 	lib->chomp (x);//Removing trailing endlines.
