@@ -27,7 +27,7 @@ int main(){
 		//std::cout << "8.  implode(stringArray, joiner)" << std::endl;
 		std::cout << "8.  isURL(string) & protocolInString(string)" << std::endl;
 		//std::cout << "9.  protocolInString(string)" << std::endl;
-		std::cout << "9. wordCount(string, *optional* delimiter)" << std::endl;
+		std::cout << "9.  wordCount(string, *optional* delimiter)" << std::endl;
 		std::cout << "10. Quit" << std::endl;
 		std::cout << std::endl;
 		std::cout << "Your choice:" << std::endl;
@@ -98,7 +98,7 @@ int main(){
 				//Having issues with getLine, program skips that line.
 				std::string strX;
 				std::cout << "Enter your string to be properly capitalized: " << std::endl;
-				//std::getLine(std::cin, strX);
+				//std::getline(std::cin, strX);
 				std::cin >> strX;
 				std::cout << "Your capitalized string is: " << std::endl;
 				std::cout << lib->capitalize(strX) << std::endl << std::endl;
@@ -154,7 +154,6 @@ int main(){
 					std::cout <<"Your string is not a valid URL." << std::endl;
 				break;
 			}
-			/*
 			case 9:
 			{
 				std::string str = "Hello, this is a string.";
@@ -162,7 +161,7 @@ int main(){
 				std::cout << "The word count of the string is: " << lib -> wordCount(str) << std::endl;
 				break;
 			}
-			*/
+			
 			case 10:
 			{
 				break;

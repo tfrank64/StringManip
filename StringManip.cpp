@@ -32,32 +32,39 @@ if(pos != std::string::npos)
 
 //A "Filter" function that filters substring from strings.
 void StringManip::chomp (std::string &str1, std::string &sub) {
-std::string final = "";
-unsigned pos = str1.find(sub);
-int n = 0;
-while (n != pos)
-	final += str1[n];
-n += sub.length();
-std::string string2 = str1.substr(n);
-str1 = final + string2;
+    std::string final = "";
+    unsigned pos = str1.find(sub);
+    int n = 0;
+    while (n != pos)
+    	final += str1[n];
+    n += sub.length();
+    std::string string2 = str1.substr(n);
+    str1 = final + string2;
 }
 
 //Function that takes in a string array and outputs the elements in a sentence structure.
 std::string StringManip::toSentence (std::string* strArray, int n) {
-std::string final = "";
-for (int i = 0; i < n-1; i++)
-	final += strArray[i] + ", ";	
-final += "and " + strArray[n-1]; //Appends "and" + last element to final string.
-return final;
+    std::string final = "";
+    for (int i = 0; i < n-1; i++)
+    	final += strArray[i] + ", ";	
+    std::cout << n << std::endl;
+    if (n > 2)
+        final += "and " + strArray[n-1]; //Appends "and" + last element to final string if at least 3 strings
+    else
+        final += strArray[n-1];
+    return final;
 }
 
 //Function that takes in a string array and outputs the elements in a sentence structure, given a specific modifer.
 std::string StringManip::toSentence (std::string* strArray, int n, std::string modifier) {
-std::string final = "";
-for (int i = 0; i < n-1; i++)
-	final += strArray[i] + ", ";	
-final += modifier + " " + strArray[n-1]; //Appends specified modifier + last element to final string.
-return final;
+    std::string final = "";
+    for (int i = 0; i < n-1; i++)
+    	final += strArray[i] + ", ";
+    if (n > 2)
+        final += modifier + " " + strArray[n-1]; //Appends specified modifier + last element to final string.
+    else
+        final += strArray[n-1];
+    return final;
 }
 
 //Toupper function for strings, used in StringManip::capitalize.
@@ -152,7 +159,6 @@ std::string StringManip::protocolInString(std::string url) {
     return "";
 }
 
-/*
 int StringManip::wordCount(std::string completeString, std::string delim) {
     std::vector<std::string> exploded = explode(completeString, delim);
     return exploded.size() & INT_MAX;
@@ -161,4 +167,3 @@ int StringManip::wordCount(std::string completeString, std::string delim) {
 int StringManip::wordCount(std::string completeString) {
     return wordCount(completeString, " ");
 }
-*/
