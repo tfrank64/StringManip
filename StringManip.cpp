@@ -50,7 +50,6 @@ std::string StringManip::toSentence (std::string* strArray, int n) {
     else {
         for (int i = 0; i < n-1; i++)
         	final += strArray[i] + ", ";
-        std::cout << n << std::endl;
         if (n > 2)
             final += "and " + strArray[n-1]; //Appends "and" + last element to final string if at least 3 strings
         else
