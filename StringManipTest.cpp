@@ -48,7 +48,7 @@ int main(){
 	}
 	std::cout << std::endl << std::endl;
 
-	std::cout << "word count: " << lib->wordCount(s) << std::endl;
+	std::cout << "word count: " << lib->wordCount(s) << std::enddl;
 	std::cout << "imploded: " << lib->implode(test, "-") << std::endl;
 
 	// Testing url validation methods

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "StringManip.h"
+#include <limits.h>
 
 //Flag to check if an instance of the library is already created.
 bool StringManip::instanceFlag = false;
@@ -9,14 +10,12 @@ StringManip* StringManip::single = NULL;
 
 //Function to create instance if it doesn't exist, else return address of instance.
 StringManip* StringManip::getInstance() {
-    if(!instanceFlag)
-    {
+    if(!instanceFlag) {
         single = new StringManip(); //Creaing new and only instance.
         instanceFlag = true;
         return single;
     }
-    else
-    {
+    else {
         return single; //Returning address of existing instance.
     }
 }
@@ -45,25 +44,35 @@ void StringManip::chomp (std::string &str1, std::string &sub) {
 //Function that takes in a string array and outputs the elements in a sentence structure.
 std::string StringManip::toSentence (std::string* strArray, int n) {
     std::string final = "";
-    for (int i = 0; i < n-1; i++)
-    	final += strArray[i] + ", ";	
-    std::cout << n << std::endl;
-    if (n > 2)
-        final += "and " + strArray[n-1]; //Appends "and" + last element to final string if at least 3 strings
-    else
-        final += strArray[n-1];
+    if (n == 2) {
+        final += strArray[0] + " and " + strArray[1]; //Handles if n = 2
+    }
+    else {
+        for (int i = 0; i < n-1; i++)
+        	final += strArray[i] + ", ";
+        std::cout << n << std::endl;
+        if (n > 2)
+            final += "and " + strArray[n-1]; //Appends "and" + last element to final string if at least 3 strings
+        else
+            final += strArray[n-1];
+    }
     return final;
 }
 
 //Function that takes in a string array and outputs the elements in a sentence structure, given a specific modifer.
 std::string StringManip::toSentence (std::string* strArray, int n, std::string modifier) {
     std::string final = "";
-    for (int i = 0; i < n-1; i++)
-    	final += strArray[i] + ", ";
-    if (n > 2)
-        final += modifier + " " + strArray[n-1]; //Appends specified modifier + last element to final string.
-    else
-        final += strArray[n-1];
+    if (n == 2) {
+        final += strArray[0] + " " + modifier + " " + strArray[1]; //Handles if n = 2
+    }
+    else {
+        for (int i = 0; i < n-1; i++)
+        	final += strArray[i] + ", ";
+        if (n > 2)
+            final += modifier + " " + strArray[n-1]; //Appends specified modifier + last element to final string.
+        else
+            final += strArray[n-1];
+    }
     return final;
 }
 
