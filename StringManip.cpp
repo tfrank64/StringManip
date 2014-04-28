@@ -67,7 +67,7 @@ std::string StringManip::toSentence (std::string* strArray, int n, std::string m
     else {
         for (int i = 0; i < n-1; i++)
         	final += strArray[i] + ", ";
-        if (n > 2)
+        if (n > 2)  
             final += modifier + " " + strArray[n-1]; //Appends specified modifier + last element to final string.
         else
             final += strArray[n-1];
