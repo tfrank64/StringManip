@@ -34,8 +34,10 @@ void StringManip::chomp (std::string &str1, std::string &sub) {
     std::string final = "";
     unsigned pos = str1.find(sub);
     int n = 0;
-    while (n != pos)
+    while (n != pos){
     	final += str1[n];
+        n++;
+    }
     n += sub.length();
     std::string string2 = str1.substr(n);
     str1 = final + string2;
