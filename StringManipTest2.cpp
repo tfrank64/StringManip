@@ -128,7 +128,7 @@ int main(){
 				std::cout << "Enter your base string." << std::endl;
 				std::cin >> str;
 				std::vector<std::string> test = lib->explode(str, delim);
-				std::cout << "Your exploded string: " << std::endl;
+				std::cout << "Your exploded string array: " << std::endl;
 				for(std::vector<std::string>::iterator it = test.begin(); it != test.end(); ++it) {
     				std::cout << *it << " ";
     			}
